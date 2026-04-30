@@ -44,6 +44,12 @@ button {
   line-height: 1.6;
 }
 
+.author {
+  margin: 12px 0 0;
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
 .grid-layout {
   display: grid;
   grid-template-columns: 1fr;

@@ -1,4 +1,4 @@
-import { type TouchEvent, useState } from 'react'
+import { useState } from 'react'
 import './App.css'
 import { findMinProblem } from './code-blocks/array/findmin'
 
@@ -28,7 +28,6 @@ function App() {
   const [selectedTopic, setSelectedTopic] = useState<TopicKey | null>(null)
   const [activeProblemId, setActiveProblemId] = useState<string | null>(null)
   const [activePanel, setActivePanel] = useState<'intuition' | 'code'>('intuition')
-  const [touchStartX, setTouchStartX] = useState<number | null>(null)
 
   const selectedProblems = selectedTopic ? problemLibrary[selectedTopic] ?? [] : []
   const activeProblem = selectedProblems.find(problem => problem.id === activeProblemId) || null
@@ -48,27 +47,12 @@ function App() {
     setActivePanel('intuition')
   }
 
-  const handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {
-    setTouchStartX(event.touches[0].clientX)
-  }
-
-  const handleTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
-    if (touchStartX === null) return
-    const touchEndX = event.changedTouches[0].clientX
-    const delta = touchEndX - touchStartX
-    if (delta < -40) {
-      setActivePanel('code')
-    } else if (delta > 40) {
-      setActivePanel('intuition')
-    }
-    setTouchStartX(null)
-  }
-
   return (
     <main className="app-shell">
       <section className="welcome-panel">
         <h1>Welcome</h1>
         <p className="subtitle">Pick a topic and explore a problem with intuition and code.</p>
+        <p className="author">by Naveen Gorojanam</p>
       </section>
 
       {!selectedTopic ? (
@@ -113,11 +97,7 @@ function App() {
       )}
 
       {activeProblem && (
-        <div
-          className="problem-modal"
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
-        >
+        <div className="problem-modal">
           <div className="problem-card">
             <button className="close-button" type="button" onClick={handleCloseProblem}>
               ×
@@ -126,8 +106,8 @@ function App() {
               <h2>{activeProblem.title}</h2>
               <p className="problem-hint">
                 {activePanel === 'intuition'
-                  ? 'Swipe left or tap code to view implementation'
-                  : 'Swipe right or tap intuition to return'}
+                  ? 'View the implementation in the Code tab'
+                  : 'Learn the approach in the Intuition tab'}
               </p>
               <div className="panel-toggle">
                 <button
