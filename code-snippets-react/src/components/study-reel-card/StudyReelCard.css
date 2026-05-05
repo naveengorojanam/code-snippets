@@ -1,0 +1,208 @@
+.study-reel-card {
+  width: min(100%, 760px);
+  margin: 0 auto;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.study-reel-card__inner {
+  min-height: min(78vh, 760px);
+  border-radius: 32px;
+  padding: 28px 22px;
+  background:
+    radial-gradient(circle at top right, rgba(59, 130, 246, 0.16), transparent 34%),
+    linear-gradient(180deg, rgba(15, 23, 42, 0.96) 0%, rgba(30, 41, 59, 0.96) 100%);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.28);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.study-reel-block {
+  opacity: 0;
+  transform: translateY(18px) scale(0.985);
+  transition: opacity 0.32s ease, transform 0.32s ease;
+  border-radius: 24px;
+  padding: 18px 18px 20px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: left;
+}
+
+.study-reel-block.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.study-reel-block--action {
+  background: rgba(15, 23, 42, 0.22);
+}
+
+.study-reel-block__label {
+  margin: 0 0 10px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(191, 219, 254, 0.82);
+}
+
+.study-reel-block__content {
+  margin: 0;
+  color: #f8fafc;
+  font-size: clamp(1.1rem, 2.8vw, 1.35rem);
+  line-height: 1.6;
+}
+
+.study-reel-code {
+  margin: 0;
+  padding: 14px;
+  overflow-x: auto;
+  border-radius: 18px;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  text-align: left;
+}
+
+.study-reel-code-trigger {
+  width: 100%;
+  border: 1px dashed rgba(191, 219, 254, 0.35);
+  border-radius: 18px;
+  padding: 16px;
+  background: rgba(15, 23, 42, 0.6);
+  color: #f8fafc;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.study-reel-code-trigger:hover {
+  transform: translateY(-1px);
+  border-color: rgba(191, 219, 254, 0.62);
+  background: rgba(15, 23, 42, 0.72);
+}
+
+.study-reel-code-trigger__title {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.study-reel-code-trigger__hint {
+  display: block;
+  margin-top: 6px;
+  color: rgba(226, 232, 240, 0.82);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.study-reel-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+.study-reel-modal__frame {
+  position: relative;
+  width: min(100%, 712px);
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.study-reel-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  background: rgba(15, 23, 42, 0.6);
+  cursor: pointer;
+}
+
+.study-reel-modal__card {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  max-height: min(82vh, 900px);
+  overflow: auto;
+  border-radius: 28px;
+  padding: 22px;
+  background: #0f172a;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: 0 28px 80px rgba(15, 23, 42, 0.4);
+}
+
+.study-reel-modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.study-reel-modal__title {
+  margin: 4px 0 0;
+  color: #ffffff;
+  font-size: 1.3rem;
+  line-height: 1.2;
+}
+
+.study-reel-modal__close {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+@media (max-width: 720px) {
+  .study-reel-card {
+    padding: 16px;
+  }
+
+  .study-reel-card__inner {
+    min-height: calc(100vh - 110px);
+    min-height: calc(100svh - 110px);
+    padding: 20px 16px;
+    border-radius: 26px;
+  }
+
+  .study-reel-block {
+    padding: 16px;
+    border-radius: 20px;
+  }
+
+  .study-reel-block__content {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .study-reel-code {
+    font-size: 0.82rem;
+  }
+
+  .study-reel-modal {
+    padding: 0 16px;
+  }
+
+  .study-reel-modal__frame {
+    width: 100%;
+  }
+
+  .study-reel-modal__card {
+    max-height: calc(100vh - 24px);
+    max-height: calc(100svh - 24px);
+    padding: 18px 16px;
+    border-radius: 22px;
+  }
+}

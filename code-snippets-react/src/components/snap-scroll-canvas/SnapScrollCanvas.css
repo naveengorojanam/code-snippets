@@ -23,27 +23,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(4rem, 14vw, 7rem);
-  font-weight: 800;
-  color: #ffffff;
+  padding: 12px 0;
+  box-sizing: border-box;
 }
 
 .snap-scroll-item:nth-child(1) {
-  background: linear-gradient(180deg, #0f172a 0%, #1d4ed8 100%);
+  background: linear-gradient(180deg, #eef4ff 0%, #dde8fb 100%);
 }
 
 .snap-scroll-item:nth-child(2) {
-  background: linear-gradient(180deg, #3f6212 0%, #84cc16 100%);
+  background: linear-gradient(180deg, #f6f8fc 0%, #e8eef9 100%);
 }
 
 .snap-scroll-item:nth-child(3) {
-  background: linear-gradient(180deg, #7c2d12 0%, #f97316 100%);
-}
-
-.snap-scroll-item:nth-child(4) {
-  background: linear-gradient(180deg, #581c87 0%, #d946ef 100%);
-}
-
-.snap-scroll-item:nth-child(5) {
-  background: linear-gradient(180deg, #0f766e 0%, #14b8a6 100%);
+  background: linear-gradient(180deg, #edf2f8 0%, #dde6f2 100%);
 }

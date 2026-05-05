@@ -1,17 +1,18 @@
 import { useRef, useState } from 'react'
 import './SnapScrollCanvas.css'
+import StudyReelCard, { type StudyReelProblem } from '../study-reel-card/StudyReelCard'
+import { studyReelProblems } from '../../data/studyReelProblems'
 
-const Item = ({ value }: { value: number }) => {
+const Item = ({ problem, isActive }: { problem: StudyReelProblem; isActive: boolean }) => {
   return (
     <div className="snap-scroll-item">
-      {value}
+      <StudyReelCard problem={problem} isActive={isActive} />
     </div>
   )
 }
 
 const SnapScrollCanvas = () => {
   const containerRef = useRef<HTMLDivElement>(null)
-  const items = [1, 2, 3, 4, 5]
   const [index, setIndex] = useState(0)
 
   const handleScroll = () => {
@@ -30,10 +31,14 @@ const SnapScrollCanvas = () => {
       ref={containerRef}
       className="snap-scroll-canvas"
       onScroll={handleScroll}
-      aria-label={`Reels feed, item ${index + 1} of ${items.length}`}
+      aria-label={`Reels feed, item ${index + 1} of ${studyReelProblems.length}`}
     >
-      {items.map((item) => (
-        <Item key={item} value={item} />
+      {studyReelProblems.map((item, itemIndex) => (
+        <Item
+          key={`${item.uniqueId}-${itemIndex === index ? 'active' : 'idle'}`}
+          problem={item}
+          isActive={itemIndex === index}
+        />
       ))}
     </div>
   )
