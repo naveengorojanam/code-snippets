@@ -1,0 +1,49 @@
+.snap-scroll-canvas {
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.snap-scroll-canvas::-webkit-scrollbar {
+  display: none;
+}
+
+.snap-scroll-item {
+  min-height: 100%;
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(4rem, 14vw, 7rem);
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.snap-scroll-item:nth-child(1) {
+  background: linear-gradient(180deg, #0f172a 0%, #1d4ed8 100%);
+}
+
+.snap-scroll-item:nth-child(2) {
+  background: linear-gradient(180deg, #3f6212 0%, #84cc16 100%);
+}
+
+.snap-scroll-item:nth-child(3) {
+  background: linear-gradient(180deg, #7c2d12 0%, #f97316 100%);
+}
+
+.snap-scroll-item:nth-child(4) {
+  background: linear-gradient(180deg, #581c87 0%, #d946ef 100%);
+}
+
+.snap-scroll-item:nth-child(5) {
+  background: linear-gradient(180deg, #0f766e 0%, #14b8a6 100%);
+}

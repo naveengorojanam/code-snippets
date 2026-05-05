@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Highlight, themes } from 'prism-react-renderer'
 import './App.css'
 import { twoSumProblem } from './code-blocks/array/twosum'
+import SnapScrollCanvas from './components/snap-scroll-canvas/SnapScrollCanvas'
 
 const topics = [
   'Arrays & Strings',
@@ -127,6 +128,7 @@ const problemLibrary: Record<TopicKey, ProblemItem[]> = {
 }
 
 function App() {
+  const [mode, setMode] = useState<'reels' | 'traditional'>('reels')
   const [selectedTopic, setSelectedTopic] = useState<TopicKey | null>(null)
   const [activeProblemId, setActiveProblemId] = useState<string | null>(null)
   const [activePanel, setActivePanel] = useState<'intuition' | 'code'>('intuition')
@@ -149,7 +151,7 @@ function App() {
     setActivePanel('intuition')
   }
 
-  return (
+  const traditionalContent = (
     <main className="app-shell">
       <section className="welcome-panel">
         <h1>Welcome</h1>
@@ -259,6 +261,50 @@ function App() {
         </div>
       )}
     </main>
+  )
+
+  return (
+    <div className={`app-frame ${mode === 'reels' ? 'app-frame--reels' : ''}`}>
+      <header className="mode-header">
+        <div className="mode-header__copy">
+          <h2 className="brand-mark" aria-label="CodeReels">
+            <span className="brand-mark__code">Code</span>
+            <span className="brand-mark__reels">Reels</span>
+          </h2>
+        </div>
+
+        <div className="mode-switch" role="tablist" aria-label="Choose interface mode">
+          <button
+            type="button"
+            role="tab"
+            aria-selected={mode === 'reels'}
+            className={`mode-switch__button ${mode === 'reels' ? 'active' : ''}`}
+            onClick={() => setMode('reels')}
+          >
+            Reels
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={mode === 'traditional'}
+            className={`mode-switch__button ${mode === 'traditional' ? 'active' : ''}`}
+            onClick={() => setMode('traditional')}
+          >
+            Traditional UI
+          </button>
+        </div>
+      </header>
+
+      <div className={`mode-content ${mode === 'reels' ? 'mode-content--reels' : ''}`}>
+        {mode === 'reels' ? (
+          <section className="reels-shell">
+            <SnapScrollCanvas />
+          </section>
+        ) : (
+          traditionalContent
+        )}
+      </div>
+    </div>
   )
 }
 
