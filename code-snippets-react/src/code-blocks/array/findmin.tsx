@@ -1,6 +1,7 @@
 export const findMinProblem = {
   id: 'findmin',
   title: 'Search array and find min',
+  category: 'Arrays',
   intuition:
     'Walk through the array from left to right, remember the smallest value seen so far, and return that minimum at the end.',
   steps: [

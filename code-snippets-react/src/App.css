@@ -238,9 +238,34 @@ button {
 }
 
 .problem-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
   font-size: 1rem;
   font-weight: 700;
   color: #111827;
+}
+
+.problem-item__title {
+  min-width: 0;
+}
+
+.problem-item__category,
+.problem-category {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  color: #1d4ed8;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .empty-state {
@@ -257,6 +282,11 @@ button {
   align-items: center;
   justify-content: center;
   padding: 20px;
+}
+
+.problem-category {
+  margin: 10px 0 0;
+  width: fit-content;
 }
 
 .problem-card {

@@ -1,6 +1,7 @@
 export const twoSumProblem = {
   id: 'two-sum',
   title: 'Two Sum',
+  category: 'Hash Map',
   intuition:
     'PATTERN:\nHashMap lookup\n\nTRIGGER:\nPair sum = target\n\nCORE:\nx + y = target → y = target - x\n\nFLOW:\nloop nums:\n  if (target - nums[i]) in map → done\n  else store nums[i]\n\nNOTE:\nstore after check (avoid same index reuse)\n\nCOMPLEXITY:\nO(n) time, O(n) space',
   steps: [

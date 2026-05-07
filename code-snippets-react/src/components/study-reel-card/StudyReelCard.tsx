@@ -6,6 +6,10 @@ export type StudyReelProblem = {
   uniqueId: string
   id: string
   title: string
+  category: {
+    short: string
+    label: string
+  }
   intuition: string
   answer: string
 }
@@ -25,9 +29,8 @@ const StudyReelCard = ({ problem, isActive }: StudyReelCardProps) => {
     () => [
       { key: 'title', label: 'Problem', content: problem.title, kind: 'text' as const },
       { key: 'intuition', label: 'Intuition', content: problem.intuition, kind: 'text' as const },
-      { key: 'answer', label: 'Answer', content: problem.answer, kind: 'action' as const },
     ],
-    [problem.answer, problem.intuition, problem.title],
+    [problem.intuition, problem.title],
   )
 
   useEffect(() => {
@@ -55,24 +58,30 @@ const StudyReelCard = ({ problem, isActive }: StudyReelCardProps) => {
           return (
             <section
               key={block.key}
-              className={`study-reel-block ${isVisible ? 'is-visible' : ''} ${block.kind === 'action' ? 'study-reel-block--action' : ''}`}
+              className={`study-reel-block ${isVisible ? 'is-visible' : ''}`}
             >
               <p className="study-reel-block__label">{block.label}</p>
-              {block.kind === 'action' ? (
-                <button
-                  type="button"
-                  className="study-reel-code-trigger"
-                  onClick={() => setIsCodeOpen(true)}
-                >
-                  <span className="study-reel-code-trigger__title">Show Code</span>
-                  <span className="study-reel-code-trigger__hint">Open the solution in a clean popup.</span>
-                </button>
-              ) : (
-                <p className="study-reel-block__content">{block.content}</p>
-              )}
+              <p className="study-reel-block__content">{block.content}</p>
             </section>
           )
         })}
+
+        <footer className={`study-reel-footer ${visibleCount >= blocks.length ? 'is-visible' : ''}`}>
+          <div className="study-reel-category" aria-label={`Category ${problem.category.label}`}>
+            <span className="study-reel-category__badge">{problem.category.short}</span>
+            <p className="study-reel-category__label">{problem.category.label}</p>
+          </div>
+
+          <button
+            type="button"
+            className="study-reel-code-action"
+            aria-label={`Open code for ${problem.title}`}
+            onClick={() => setIsCodeOpen(true)}
+          >
+            <span className="study-reel-code-action__icon">{'</>'}</span>
+            <span className="study-reel-code-action__label">Code</span>
+          </button>
+        </footer>
       </div>
 
       {isCodeOpen && (

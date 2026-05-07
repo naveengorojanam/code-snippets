@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build:check": "tsc -b && vite build --outDir /tmp/code-snippets-react-build-check --emptyOutDir",
+    "build": "pnpm run build:check && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },

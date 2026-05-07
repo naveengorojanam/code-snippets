@@ -25,14 +25,16 @@ type TopicKey = (typeof topics)[number]
 type ProblemItem = {
   id: string
   title: string
+  category: string
   intuition: string
   steps: string[]
   code: string
 }
 
-const createProblem = (title: string): ProblemItem => ({
+const createProblem = (title: string, category: string): ProblemItem => ({
   id: title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-'),
   title,
+  category,
   intuition: `Understand the pattern for ${title}. Focus on the data structure and edge cases for this problem.`,
   steps: [
     'Identify the core problem pattern and required data structure.',
@@ -46,84 +48,100 @@ const createProblem = (title: string): ProblemItem => ({
 `,
 })
 
+const topicCategoryMap: Record<TopicKey, string> = {
+  'Arrays & Strings': 'Arrays',
+  'Sliding Window / Two Pointers': '2-Pointers',
+  'Hashing / Maps / Sets': 'Hash Map',
+  'Stack / Monotonic Stack': 'Stack',
+  'Binary Search': 'Binary Search',
+  'Linked List': 'Linked List',
+  Trees: 'Trees',
+  'Graphs (DFS/BFS)': 'Graph',
+  'Union Find (Disjoint Set)': 'Union Find',
+  'Dynamic Programming (DP)': 'DP',
+  Backtracking: 'Backtracking',
+  Greedy: 'Greedy',
+  'Heaps / Priority Queue': 'Heap',
+}
+
 const problemLibrary: Record<TopicKey, ProblemItem[]> = {
   'Arrays & Strings': [
     twoSumProblem,
-    createProblem('Best Time to Buy and Sell Stock'),
-    createProblem('Product of Array Except Self'),
-    createProblem('Maximum Subarray'),
-    createProblem('Longest Substring Without Repeating Characters'),
-    createProblem('Container With Most Water'),
+    createProblem('Best Time to Buy and Sell Stock', topicCategoryMap['Arrays & Strings']),
+    createProblem('Product of Array Except Self', topicCategoryMap['Arrays & Strings']),
+    createProblem('Maximum Subarray', topicCategoryMap['Arrays & Strings']),
+    createProblem('Longest Substring Without Repeating Characters', topicCategoryMap['Arrays & Strings']),
+    createProblem('Container With Most Water', topicCategoryMap['Arrays & Strings']),
   ],
   'Sliding Window / Two Pointers': [
-    createProblem('Longest Repeating Character Replacement'),
-    createProblem('Minimum Window Substring'),
-    createProblem('3Sum'),
-    createProblem('Trapping Rain Water'),
+    createProblem('Longest Repeating Character Replacement', topicCategoryMap['Sliding Window / Two Pointers']),
+    createProblem('Minimum Window Substring', topicCategoryMap['Sliding Window / Two Pointers']),
+    createProblem('3Sum', topicCategoryMap['Sliding Window / Two Pointers']),
+    createProblem('Trapping Rain Water', topicCategoryMap['Sliding Window / Two Pointers']),
   ],
   'Hashing / Maps / Sets': [
-    createProblem('Subarray Sum Equals K'),
-    createProblem('Group Anagrams'),
-    createProblem('Top K Frequent Elements'),
+    createProblem('Subarray Sum Equals K', topicCategoryMap['Hashing / Maps / Sets']),
+    createProblem('Group Anagrams', topicCategoryMap['Hashing / Maps / Sets']),
+    createProblem('Top K Frequent Elements', topicCategoryMap['Hashing / Maps / Sets']),
   ],
   'Stack / Monotonic Stack': [
-    createProblem('Valid Parentheses'),
-    createProblem('Daily Temperatures'),
-    createProblem('Largest Rectangle in Histogram'),
+    createProblem('Valid Parentheses', topicCategoryMap['Stack / Monotonic Stack']),
+    createProblem('Daily Temperatures', topicCategoryMap['Stack / Monotonic Stack']),
+    createProblem('Largest Rectangle in Histogram', topicCategoryMap['Stack / Monotonic Stack']),
   ],
   'Binary Search': [
-    createProblem('Binary Search (basic)'),
-    createProblem('Search in Rotated Sorted Array'),
-    createProblem('Find Peak Element'),
-    createProblem('Median of Two Sorted Arrays (hard, but asked)'),
+    createProblem('Binary Search (basic)', topicCategoryMap['Binary Search']),
+    createProblem('Search in Rotated Sorted Array', topicCategoryMap['Binary Search']),
+    createProblem('Find Peak Element', topicCategoryMap['Binary Search']),
+    createProblem('Median of Two Sorted Arrays (hard, but asked)', topicCategoryMap['Binary Search']),
   ],
   'Linked List': [
-    createProblem('Reverse Linked List'),
-    createProblem('Detect Cycle'),
-    createProblem('Merge Two Sorted Lists'),
-    createProblem('LRU Cache ⭐ (VERY IMPORTANT)'),
+    createProblem('Reverse Linked List', topicCategoryMap['Linked List']),
+    createProblem('Detect Cycle', topicCategoryMap['Linked List']),
+    createProblem('Merge Two Sorted Lists', topicCategoryMap['Linked List']),
+    createProblem('LRU Cache ⭐ (VERY IMPORTANT)', topicCategoryMap['Linked List']),
   ],
   Trees: [
-    createProblem('Maximum Depth of Binary Tree'),
-    createProblem('Validate Binary Search Tree'),
-    createProblem('Lowest Common Ancestor'),
-    createProblem('Binary Tree Level Order Traversal'),
-    createProblem('Diameter of Binary Tree'),
+    createProblem('Maximum Depth of Binary Tree', topicCategoryMap.Trees),
+    createProblem('Validate Binary Search Tree', topicCategoryMap.Trees),
+    createProblem('Lowest Common Ancestor', topicCategoryMap.Trees),
+    createProblem('Binary Tree Level Order Traversal', topicCategoryMap.Trees),
+    createProblem('Diameter of Binary Tree', topicCategoryMap.Trees),
   ],
   'Graphs (DFS/BFS)': [
-    createProblem('Number of Islands ⭐'),
-    createProblem('Clone Graph'),
-    createProblem('Course Schedule ⭐'),
-    createProblem('Pacific Atlantic Water Flow'),
+    createProblem('Number of Islands ⭐', topicCategoryMap['Graphs (DFS/BFS)']),
+    createProblem('Clone Graph', topicCategoryMap['Graphs (DFS/BFS)']),
+    createProblem('Course Schedule ⭐', topicCategoryMap['Graphs (DFS/BFS)']),
+    createProblem('Pacific Atlantic Water Flow', topicCategoryMap['Graphs (DFS/BFS)']),
   ],
   'Union Find (Disjoint Set)': [
-    createProblem('Number of Connected Components'),
-    createProblem('Accounts Merge'),
-    createProblem('Redundant Connection'),
+    createProblem('Number of Connected Components', topicCategoryMap['Union Find (Disjoint Set)']),
+    createProblem('Accounts Merge', topicCategoryMap['Union Find (Disjoint Set)']),
+    createProblem('Redundant Connection', topicCategoryMap['Union Find (Disjoint Set)']),
   ],
   'Dynamic Programming (DP)': [
-    createProblem('Climbing Stairs'),
-    createProblem('House Robber'),
-    createProblem('Longest Increasing Subsequence'),
-    createProblem('Coin Change ⭐'),
-    createProblem('Longest Common Subsequence'),
-    createProblem('Edit Distance'),
+    createProblem('Climbing Stairs', topicCategoryMap['Dynamic Programming (DP)']),
+    createProblem('House Robber', topicCategoryMap['Dynamic Programming (DP)']),
+    createProblem('Longest Increasing Subsequence', topicCategoryMap['Dynamic Programming (DP)']),
+    createProblem('Coin Change ⭐', topicCategoryMap['Dynamic Programming (DP)']),
+    createProblem('Longest Common Subsequence', topicCategoryMap['Dynamic Programming (DP)']),
+    createProblem('Edit Distance', topicCategoryMap['Dynamic Programming (DP)']),
   ],
   Backtracking: [
-    createProblem('Subsets'),
-    createProblem('Permutations'),
-    createProblem('Combination Sum'),
-    createProblem('N-Queens'),
+    createProblem('Subsets', topicCategoryMap.Backtracking),
+    createProblem('Permutations', topicCategoryMap.Backtracking),
+    createProblem('Combination Sum', topicCategoryMap.Backtracking),
+    createProblem('N-Queens', topicCategoryMap.Backtracking),
   ],
   Greedy: [
-    createProblem('Jump Game'),
-    createProblem('Gas Station'),
-    createProblem('Merge Intervals'),
+    createProblem('Jump Game', topicCategoryMap.Greedy),
+    createProblem('Gas Station', topicCategoryMap.Greedy),
+    createProblem('Merge Intervals', topicCategoryMap.Greedy),
   ],
   'Heaps / Priority Queue': [
-    createProblem('Kth Largest Element'),
-    createProblem('Merge K Sorted Lists'),
-    createProblem('Top K Frequent Elements'),
+    createProblem('Kth Largest Element', topicCategoryMap['Heaps / Priority Queue']),
+    createProblem('Merge K Sorted Lists', topicCategoryMap['Heaps / Priority Queue']),
+    createProblem('Top K Frequent Elements', topicCategoryMap['Heaps / Priority Queue']),
   ],
 }
 
@@ -190,7 +208,8 @@ function App() {
                   type="button"
                   onClick={() => handleProblemOpen(problem.id)}
                 >
-                  {problem.title}
+                  <span className="problem-item__title">{problem.title}</span>
+                  <span className="problem-item__category">{problem.category}</span>
                 </button>
               ))}
             </div>
@@ -208,6 +227,7 @@ function App() {
             </button>
             <div className="problem-top">
               <h2>{activeProblem.title}</h2>
+              <p className="problem-category">{activeProblem.category}</p>
               <p className="problem-hint">
                 {activePanel === 'intuition'
                   ? 'View the implementation in the Code tab'
