@@ -18,25 +18,19 @@
 }
 
 .snap-scroll-item {
-  --reel-card-bg: linear-gradient(145deg, #fff6f1 0%, #ffe7db 100%);
-  --reel-card-border: rgba(203, 140, 120, 0.28);
-  --reel-card-shadow: rgba(173, 129, 114, 0.22);
-  --reel-block-bg: rgba(255, 249, 245, 0.86);
-  --reel-block-border: rgba(205, 157, 136, 0.22);
-  --reel-action-bg: rgba(255, 238, 228, 0.94);
-  --reel-label-color: #b56c55;
-  --reel-title-color: #6d3f31;
-  --reel-text-color: #5d4037;
-  --reel-hint-color: rgba(109, 63, 49, 0.78);
-  --reel-trigger-bg: rgba(255, 244, 236, 0.96);
-  --reel-trigger-bg-hover: rgba(255, 238, 228, 1);
-  --reel-trigger-border: rgba(190, 128, 107, 0.44);
-  --reel-trigger-border-hover: rgba(190, 128, 107, 0.72);
-  --reel-modal-backdrop: rgba(109, 63, 49, 0.24);
-  --reel-modal-bg: linear-gradient(145deg, #fff6f1 0%, #ffe4d5 100%);
-  --reel-modal-border: rgba(203, 140, 120, 0.28);
-  --reel-modal-shadow: rgba(173, 129, 114, 0.28);
-  --reel-close-bg: rgba(181, 108, 85, 0.12);
+  --reel-title-color: var(--theme-title);
+  --reel-text-color: var(--theme-text);
+  --reel-muted-color: var(--theme-muted);
+  --reel-chip-bg: var(--theme-chip-bg);
+  --reel-chip-bg-hover: var(--theme-chip-bg-hover);
+  --reel-chip-border: var(--theme-chip-border);
+  --reel-chip-border-hover: var(--theme-chip-border-hover);
+  --reel-badge-contrast: var(--theme-badge-contrast);
+  --reel-modal-backdrop: var(--theme-modal-backdrop);
+  --reel-modal-bg: var(--theme-panel);
+  --reel-modal-border: var(--theme-panel-border);
+  --reel-modal-shadow: var(--theme-modal-shadow);
+  --reel-close-bg: var(--theme-chip-bg);
   flex: 0 0 100%;
   height: 100%;
   width: 100%;
@@ -48,79 +42,5 @@
   padding: 0;
   box-sizing: border-box;
   overflow: hidden;
-}
-
-.snap-scroll-item:nth-child(1) {
-  --reel-card-bg: linear-gradient(145deg, #fff5ef 0%, #ffe1d3 100%);
-  --reel-card-border: rgba(222, 156, 135, 0.34);
-  --reel-card-shadow: rgba(206, 153, 136, 0.28);
-  --reel-block-bg: rgba(255, 250, 246, 0.88);
-  --reel-block-border: rgba(224, 169, 149, 0.24);
-  --reel-action-bg: rgba(255, 240, 232, 0.95);
-  --reel-label-color: #c16d54;
-  --reel-title-color: #73453a;
-  --reel-text-color: #63453c;
-  --reel-hint-color: rgba(115, 69, 58, 0.76);
-  --reel-trigger-bg: rgba(255, 244, 237, 0.98);
-  --reel-trigger-bg-hover: rgba(255, 237, 229, 1);
-  --reel-trigger-border: rgba(211, 137, 114, 0.45);
-  --reel-trigger-border-hover: rgba(211, 137, 114, 0.76);
-  --reel-modal-backdrop: rgba(135, 88, 73, 0.24);
-  --reel-modal-bg: linear-gradient(145deg, #fff6f1 0%, #ffe2d5 100%);
-  --reel-modal-border: rgba(222, 156, 135, 0.34);
-  --reel-modal-shadow: rgba(196, 140, 122, 0.3);
-  --reel-close-bg: rgba(193, 109, 84, 0.12);
-  background:
-    radial-gradient(circle at top, rgba(255, 251, 247, 0.82), transparent 38%),
-    linear-gradient(180deg, #ffd9c9 0%, #f1bfa8 100%);
-}
-
-.snap-scroll-item:nth-child(2) {
-  --reel-card-bg: linear-gradient(145deg, #f7fff0 0%, #e5f3cf 100%);
-  --reel-card-border: rgba(154, 185, 123, 0.34);
-  --reel-card-shadow: rgba(155, 184, 138, 0.26);
-  --reel-block-bg: rgba(249, 255, 244, 0.9);
-  --reel-block-border: rgba(172, 199, 142, 0.24);
-  --reel-action-bg: rgba(239, 249, 229, 0.96);
-  --reel-label-color: #6f9a4f;
-  --reel-title-color: #42563a;
-  --reel-text-color: #485941;
-  --reel-hint-color: rgba(66, 86, 58, 0.76);
-  --reel-trigger-bg: rgba(245, 252, 236, 0.98);
-  --reel-trigger-bg-hover: rgba(237, 248, 226, 1);
-  --reel-trigger-border: rgba(132, 170, 98, 0.44);
-  --reel-trigger-border-hover: rgba(132, 170, 98, 0.74);
-  --reel-modal-backdrop: rgba(78, 102, 67, 0.22);
-  --reel-modal-bg: linear-gradient(145deg, #f8fff2 0%, #e3f2cb 100%);
-  --reel-modal-border: rgba(154, 185, 123, 0.34);
-  --reel-modal-shadow: rgba(118, 146, 107, 0.28);
-  --reel-close-bg: rgba(111, 154, 79, 0.12);
-  background:
-    radial-gradient(circle at top, rgba(251, 255, 246, 0.8), transparent 38%),
-    linear-gradient(180deg, #e5f4c9 0%, #c5ddb3 100%);
-}
-
-.snap-scroll-item:nth-child(3) {
-  --reel-card-bg: linear-gradient(145deg, #fff3fb 0%, #f2dff7 100%);
-  --reel-card-border: rgba(191, 151, 205, 0.34);
-  --reel-card-shadow: rgba(181, 150, 194, 0.28);
-  --reel-block-bg: rgba(254, 248, 255, 0.9);
-  --reel-block-border: rgba(199, 165, 213, 0.24);
-  --reel-action-bg: rgba(247, 236, 251, 0.96);
-  --reel-label-color: #a06bb0;
-  --reel-title-color: #5f496d;
-  --reel-text-color: #594b63;
-  --reel-hint-color: rgba(95, 73, 109, 0.76);
-  --reel-trigger-bg: rgba(251, 243, 253, 0.98);
-  --reel-trigger-bg-hover: rgba(246, 233, 250, 1);
-  --reel-trigger-border: rgba(173, 127, 190, 0.42);
-  --reel-trigger-border-hover: rgba(173, 127, 190, 0.72);
-  --reel-modal-backdrop: rgba(95, 73, 109, 0.22);
-  --reel-modal-bg: linear-gradient(145deg, #fff5fd 0%, #f1def8 100%);
-  --reel-modal-border: rgba(191, 151, 205, 0.34);
-  --reel-modal-shadow: rgba(155, 126, 170, 0.28);
-  --reel-close-bg: rgba(160, 107, 176, 0.12);
-  background:
-    radial-gradient(circle at top, rgba(255, 249, 255, 0.82), transparent 38%),
-    linear-gradient(180deg, #f5dcff 0%, #ddc7ef 100%);
+  background: var(--theme-bg);
 }

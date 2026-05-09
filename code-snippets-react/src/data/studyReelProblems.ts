@@ -12,8 +12,8 @@ export const studyReelProblems: StudyReelProblem[] = [
     id: twoSumProblem.id,
     title: twoSumProblem.title,
     category: createReelCategory('HM', twoSumProblem.category),
-    intuition:
-      'Store seen values in a map. For each number, check whether target minus current value was already seen.',
+    statement: twoSumProblem.statement,
+    intuition: twoSumProblem.steps,
     answer: twoSumProblem.code,
   },
   {
@@ -21,7 +21,12 @@ export const studyReelProblems: StudyReelProblem[] = [
     id: 'best-time-to-buy-and-sell-stock',
     title: 'Best Time to Buy and Sell Stock',
     category: createReelCategory('ARR', 'Arrays'),
-    intuition: 'Track the minimum price so far and update the best profit at each step.',
+    statement: 'Choose the best day to buy and the best later day to sell for maximum profit.',
+    intuition: [
+      'Keep track of the minimum price seen so far as you scan left to right.',
+      'At each day, compute the profit if you sold on that day.',
+      'Update the best profit whenever the current profit is larger.',
+    ],
     answer: `int maxProfit(vector<int>& prices) {
     int minPrice = INT_MAX;
     int best = 0;
@@ -39,8 +44,12 @@ export const studyReelProblems: StudyReelProblem[] = [
     id: 'valid-parentheses',
     title: 'Valid Parentheses',
     category: createReelCategory('STK', 'Stack'),
-    intuition:
-      'Push opening brackets. On a closing bracket, the stack top must be the matching opener.',
+    statement: 'Determine whether the brackets in the string close in the correct order.',
+    intuition: [
+      'Push every opening bracket onto the stack.',
+      'When you see a closing bracket, the top of the stack must be its matching opener.',
+      'The string is valid only if the stack is empty at the end.',
+    ],
     answer: `bool isValid(string s) {
     stack<char> st;
 

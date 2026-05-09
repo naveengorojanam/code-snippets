@@ -10,7 +10,8 @@ export type StudyReelProblem = {
     short: string
     label: string
   }
-  intuition: string
+  statement: string
+  intuition: string[]
   answer: string
 }
 
@@ -19,7 +20,7 @@ type StudyReelCardProps = {
   isActive: boolean
 }
 
-const REVEAL_DELAY_MS = 220
+const REVEAL_DELAY_MS = 320
 
 const StudyReelCard = ({ problem, isActive }: StudyReelCardProps) => {
   const [visibleCount, setVisibleCount] = useState(0)
@@ -27,16 +28,29 @@ const StudyReelCard = ({ problem, isActive }: StudyReelCardProps) => {
 
   const blocks = useMemo(
     () => [
-      { key: 'title', label: 'Problem', content: problem.title, kind: 'text' as const },
-      { key: 'intuition', label: 'Intuition', content: problem.intuition, kind: 'text' as const },
+      {
+        key: 'problem',
+        title: problem.title,
+        content: problem.statement,
+        kind: 'text' as const,
+      },
+      {
+        key: 'intuition',
+        title: 'Intuition',
+        content: problem.intuition,
+        kind: 'list' as const,
+      },
     ],
-    [problem.intuition, problem.title],
+    [problem.intuition, problem.statement, problem.title],
   )
 
   useEffect(() => {
     if (!isActive) {
+      setVisibleCount(0)
       return
     }
+
+    setVisibleCount(0)
 
     const timers = blocks.map((_, index) =>
       window.setTimeout(() => {
@@ -58,10 +72,22 @@ const StudyReelCard = ({ problem, isActive }: StudyReelCardProps) => {
           return (
             <section
               key={block.key}
-              className={`study-reel-block ${isVisible ? 'is-visible' : ''}`}
+              className={`study-reel-section ${isVisible ? 'is-visible' : ''}`}
             >
-              <p className="study-reel-block__label">{block.label}</p>
-              <p className="study-reel-block__content">{block.content}</p>
+              <h3 className="study-reel-section__title">{block.title}</h3>
+              {block.kind === 'text' ? (
+                <p className="study-reel-section__content study-reel-section__content--statement">
+                  {block.content}
+                </p>
+              ) : (
+                <>
+                  <ul className="study-reel-section__list">
+                    {block.content.map(item => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </>
+              )}
             </section>
           )
         })}
@@ -96,7 +122,7 @@ const StudyReelCard = ({ problem, isActive }: StudyReelCardProps) => {
             <div className="study-reel-modal__card">
               <div className="study-reel-modal__header">
                 <div>
-                  <p className="study-reel-block__label">Code</p>
+                  <p className="study-reel-modal__eyebrow">Code</p>
                   <h3 className="study-reel-modal__title">{problem.title}</h3>
                 </div>
                 <button

@@ -2,6 +2,8 @@ export const twoSumProblem = {
   id: 'two-sum',
   title: 'Two Sum',
   category: 'Hash Map',
+  statement:
+    'Given an integer array nums and an integer target, return the indices of the two values whose sum equals target.\n\nYou can assume there is exactly one valid answer, and you cannot use the same element twice.',
   intuition:
     'PATTERN:\nHashMap lookup\n\nTRIGGER:\nPair sum = target\n\nCORE:\nx + y = target → y = target - x\n\nFLOW:\nloop nums:\n  if (target - nums[i]) in map → done\n  else store nums[i]\n\nNOTE:\nstore after check (avoid same index reuse)\n\nCOMPLEXITY:\nO(n) time, O(n) space',
   steps: [
