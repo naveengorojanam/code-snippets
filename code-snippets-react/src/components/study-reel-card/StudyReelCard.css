@@ -92,6 +92,32 @@
   align-items: center;
   gap: 12px;
   min-width: 0;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.study-reel-category:hover {
+  transform: translateY(-1px);
+}
+
+.study-reel-category__meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.study-reel-category__eyebrow {
+  color: var(--reel-muted-color);
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .study-reel-category__badge {

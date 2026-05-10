@@ -7,6 +7,7 @@ export type StudyReelProblem = {
   id: string
   title: string
   category: {
+    slug: string
     short: string
     label: string
   }
@@ -18,11 +19,12 @@ export type StudyReelProblem = {
 type StudyReelCardProps = {
   problem: StudyReelProblem
   isActive: boolean
+  onCategorySelect?: (problem: StudyReelProblem) => void
 }
 
 const REVEAL_DELAY_MS = 320
 
-const StudyReelCard = ({ problem, isActive }: StudyReelCardProps) => {
+const StudyReelCard = ({ problem, isActive, onCategorySelect }: StudyReelCardProps) => {
   const [visibleCount, setVisibleCount] = useState(0)
   const [isCodeOpen, setIsCodeOpen] = useState(false)
 
@@ -93,10 +95,18 @@ const StudyReelCard = ({ problem, isActive }: StudyReelCardProps) => {
         })}
 
         <footer className={`study-reel-footer ${visibleCount >= blocks.length ? 'is-visible' : ''}`}>
-          <div className="study-reel-category" aria-label={`Category ${problem.category.label}`}>
+          <button
+            type="button"
+            className="study-reel-category"
+            aria-label={`Open ${problem.category.label} profile`}
+            onClick={() => onCategorySelect?.(problem)}
+          >
             <span className="study-reel-category__badge">{problem.category.short}</span>
-            <p className="study-reel-category__label">{problem.category.label}</p>
-          </div>
+            <span className="study-reel-category__meta">
+              <span className="study-reel-category__eyebrow">Topic</span>
+              <span className="study-reel-category__label">{problem.category.label}</span>
+            </span>
+          </button>
 
           <button
             type="button"
