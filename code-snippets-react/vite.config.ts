@@ -6,7 +6,8 @@ import babel from '@rolldown/plugin-babel'
 export default defineConfig({
   base: '/code-snippets/',
   build: {
-    outDir: '../docs'
+    outDir: '../docs/code-snippets',
+    emptyOutDir: true,
   },
   plugins: [
     react(),

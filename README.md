@@ -1,6 +1,9 @@
 # code-snippets
 
-This repository contains a React + TypeScript study app for coding interview problems.
+This repository contains:
+
+- a root GitHub Pages landing page in `docs/index.html`
+- a React + TypeScript study app published at `/code-snippets/`
 
 ## Project Purpose
 
@@ -14,7 +17,9 @@ The current work has focused mainly on the reels experience.
 ## Repo Layout
 
 - `code-snippets-react/`: main app source
-- `docs/`: generated production site output used for deployment/hosting
+- `docs/`: GitHub Pages artifact root
+- `docs/index.html`: root landing page for `https://<user>.github.io/`
+- `docs/code-snippets/`: generated production output for the React app
 
 ## Important App Files
 
@@ -54,13 +59,13 @@ Run commands from `code-snippets-react/`.
 
 - `pnpm dev`: start local dev server
 - `pnpm run build:check`: type-check and validate the production build without writing repo build artifacts
-- `pnpm build`: run the check, then generate the real production output in `docs/`
+- `pnpm build`: run the check, then generate the real production output in `docs/code-snippets/`
 - `pnpm lint`: run ESLint
 - `pnpm preview`: preview the built app
 
 ## Build Output Notes
 
-- Vite is configured to build into `docs/`
+- Vite is configured to build into `docs/code-snippets/`
 - `build:check` writes temporary output to `/tmp/code-snippets-react-build-check`
 - use `build:check` for normal verification during development
 - use `build` only when you intentionally want fresh generated site files
